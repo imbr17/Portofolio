@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Biplob Raihan Portfolio</title>
+<style>
+    /* Reset box-sizing */
+    html { box-sizing: border-box; }
+    *, *:before, *:after { box-sizing: inherit; margin:0; padding:0; }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f5f5f5;
+    }
+
+    a { text-decoration: none; transition: all 0.3s ease; }
+
+    /* Header */
+    header {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: #fff;
+        text-align: center;
+        padding: 80px 20px;
+    }
+    header h1 { font-size: 3em; margin-bottom: 10px; }
+    header h2 { font-weight: 400; margin-bottom: 20px; }
+    header p { font-size: 1.2em; max-width: 700px; margin: auto; }
+
+    /* Section */
+    section {
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .content-wrap { max-width: 900px; margin: auto; }
+
+    /* About */
+    .about { background: #f7fff7; }
+
+    /* Skills */
+    .skill { background: #6c5ce7; color: #fff; }
+    .skill ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        padding-top: 20px;
+    }
+    .skill li {
+        background: rgba(255,255,255,0.2);
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: transform 0.3s ease, background 0.3s ease;
+        cursor: default;
+    }
+    .skill li:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.35);
+    }
+
+    /* Projects */
+    .project-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    .project-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        flex: 1 1 250px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Education */
+    .education p { margin-bottom: 10px; }
+
+    /* Contact */
+    .contact a {
+        display: inline-block;
+        margin: 10px 15px;
+        padding: 10px 20px;
+        color: #6a11cb;
+        background: #fff;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    .contact a:hover {
+        background: #6a11cb;
+        color: #fff;
+        transform: translateY(-5px);
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+        header h1 { font-size: 2.2em; }
+        .skill ul { flex-direction: column; gap: 10px; }
+        .project-cards { flex-direction: column; gap: 15px; }
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+    <div class="content-wrap">
+        <h1>Md Biplob Raihan</h1>
+        <h2>Machine Learning Engineer</h2>
+        <p>I am a ML Engineer passionate about AI, LLMs with RAG systems, and building AI models. Currently studying CSE and working on ML projects.</p>
+    </div>
+</header>
+
+<section class="about">
+    <div class="content-wrap">
+        <h2>About Me</h2>
+        <p>I love exploring machine learning, AI model development, and transformers. Currently focusing on projects that combine data analysis with deep learning.</p>
+    </div>
+</section>
+
+<section class="skill">
+    <div class="content-wrap">
+        <h2>Skills</h2>
+        <ul>
+            <li>Python</li>
+            <li>C++</li>
+            <li>Machine Learning</li>
+            <li>Deep Learning</li>
+            <li>Transformers</li>
+            <li>TensorFlow</li>
+            <li>Computer Vision</li>
+            <li>Web Development</li>
+        </ul>
+    </div>
+</section>
+
+<section class="project">
+    <div class="content-wrap">
+        <h2>Projects</h2>
+        <div class="project-cards">
+            <div class="project-card">
+                <h3>Disease Prediction System</h3>
+                <p>A ML system that predicts diseases based on medical data using classification algorithms.</p>
+            </div>
+            <!-- তুমি আরও project cards এখানে যোগ করতে পারো -->
+        </div>
+    </div>
+</section>
+
+<section class="education">
+    <div class="content-wrap">
+        <h2>Education</h2>
+        <h3>Atish Dipankar University Of Science and Technology</h3>
+        <p>BSc in Computer Science and Engineering</p>
+        <p>Currently studying in 4th year focusing on Machine Learning and Software Development</p>
+    </div>
+</section>
+
+<section class="contact">
+    <div class="content-wrap">
+        <h2>Contact</h2>
+        <a href="https://mail.google.com/" target="_blank">Gmail</a>
+        <a href="https://facebook.com/" target="_blank">Facebook</a>
+        <a href="https://twitter.com/" target="_blank">Twitter</a>
+        <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+    </div>
+</section>
+
+</body>
+</html>
