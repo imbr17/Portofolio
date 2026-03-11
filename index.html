@@ -1,191 +1,1390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md Biplob Raihan Portfolio</title>
-<style>
-    /* Reset box-sizing */
-    html { box-sizing: border-box; }
-    *, *:before, *:after { box-sizing: inherit; margin:0; padding:0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biplob Raihan | ML & LLM Engineer</title>
+  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sea-deep: #0d3b4c;
+      --sea-medium: #1a5a6e;
+      --sea-light: #2a7a8e;
+      --terracotta: #c4704f;
+      --terracotta-light: #d4845f;
+      --olive: #5a6f4a;
+      --olive-light: #7a8f6a;
+      --sand: #f5f0e6;
+      --sand-dark: #e8e0d0;
+      --cream: #faf8f5;
+      --amber: #c9a227;
+      --charcoal: #1a1a1a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-        font-family: 'Arial', sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background: #f5f5f5;
+      font-family: 'Jost', sans-serif;
+      background-color: var(--cream);
+      color: var(--sea-deep);
+      overflow-x: hidden;
     }
 
-    a { text-decoration: none; transition: all 0.3s ease; }
-
-    /* Header */
-    header {
-        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-        color: #fff;
-        text-align: center;
-        padding: 80px 20px;
-    }
-    header h1 { font-size: 3em; margin-bottom: 10px; }
-    header h2 { font-weight: 400; margin-bottom: 20px; }
-    header p { font-size: 1.2em; max-width: 700px; margin: auto; }
-
-    /* Section */
-    section {
-        padding: 80px ;
-        text-align: center;
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
     }
 
-    .content-wrap { max-width: 900px; margin: auto; }
-
-    /* About */
-    .about { background: #f7fff7; }
-
-    /* Skills */
-    .skill { background: #6c5ce7; color: #fff; }
-    .skill ul {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        padding-top: 20px;
-    }
-    .skill li {
-        background: rgba(255,255,255,0.2);
-        padding: 10px 20px;
-        border-radius: 20px;
-        transition: transform 0.3s ease, background 0.3s ease;
-        cursor: default;
-    }
-    .skill li:hover {
-        transform: translateY(-5px);
-        background: rgba(255,255,255,0.35);
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Projects */
-    .project-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 30px;
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+
+    @keyframes dataFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes neuralPulse {
+      0% { stroke-dashoffset: 1000; opacity: 0.3; }
+      50% { opacity: 0.8; }
+      100% { stroke-dashoffset: 0; opacity: 0.3; }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes codeSlide {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    /* Navigation */
+    .nav-link {
+      position: relative;
+      color: var(--sea-deep);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--terracotta), var(--amber));
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--terracotta);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(ellipse, rgba(26, 90, 110, 0.08) 0%, transparent 70%);
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .hero-content {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--sea-deep);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 400;
+      color: var(--terracotta);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      max-width: 550px;
+      color: var(--sea-medium);
+      line-height: 1.8;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(90, 111, 74, 0.1);
+      border-left: 3px solid var(--olive);
+      font-size: 0.85rem;
+      color: var(--olive);
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1s ease-out 0.1s both;
+    }
+
+    /* Neural Network Background */
+    .neural-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .neural-node {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .neural-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sea-medium), transparent);
+      transform-origin: left center;
+      opacity: 0.4;
+    }
+
+    /* Decorative Elements */
+    .deco-grid {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(26, 90, 110, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 90, 110, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .deco-circle-1 {
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(196, 112, 79, 0.15);
+      top: 10%;
+      right: 5%;
+      animation: rotate 80s linear infinite;
+    }
+
+    .deco-circle-2 {
+      width: 350px;
+      height: 350px;
+      border: 1px dashed rgba(26, 90, 110, 0.12);
+      bottom: 15%;
+      left: 5%;
+      animation: rotate 50s linear infinite reverse;
+    }
+
+    .code-float {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      color: var(--sea-medium);
+      opacity: 0.2;
+      line-height: 1.8;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 40px;
+      background: var(--sea-deep);
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--terracotta);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(196, 112, 79, 0.3);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 40px;
+      border: 2px solid var(--sea-deep);
+      color: var(--sea-deep);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--sea-deep);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      color: var(--sea-deep);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 3rem;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 120px 0;
+      background: var(--sea-deep);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(196, 112, 79, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(90, 111, 74, 0.1) 0%, transparent 50%);
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .tech-tag {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+      background: rgba(196, 112, 79, 0.2);
+      border-color: var(--terracotta);
+      transform: translateY(-2px);
+    }
+
+    /* Skills Section */
+    .skills-section {
+      padding: 120px 0;
+      background: var(--sand);
+      position: relative;
+    }
+
+    .skill-card {
+      background: var(--cream);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--terracotta), var(--amber));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(26, 90, 110, 0.1);
+      box-shadow: 0 20px 40px rgba(13, 59, 76, 0.1);
+    }
+
+    .skill-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .skill-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: var(--terracotta);
+      transition: transform 0.5s ease;
+    }
+
+    .skill-card:hover .skill-icon {
+      transform: scale(1.1);
+    }
+
+    .skill-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--sea-deep);
+      margin-bottom: 12px;
+    }
+
+    .skill-description {
+      color: var(--sea-medium);
+      line-height: 1.7;
+    }
+
+    /* Projects Section */
+    .projects-section {
+      padding: 120px 0;
+      background: var(--cream);
+    }
+
     .project-card {
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        flex: 1 1 250px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
     }
 
-    /* Education */
-    .education p { margin-bottom: 10px; }
-
-    /* Contact */
-    .contact a {
-        display: inline-block;
-        margin: 10px 15px;
-        padding: 10px 20px;
-        color: #6a11cb;
-        background: #fff;
-        border-radius: 50px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-    }
-    .contact a:hover {
-        background: #6a11cb;
-        color: #fff;
-        transform: translateY(-5px);
+    .project-image-wrapper {
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Responsive */
-    @media(max-width: 768px) {
-        header h1 { font-size: 2.2em; }
-        .skill ul { flex-direction: column; gap: 10px; }
-        .project-cards { flex-direction: column; gap: 15px; }
+    .project-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: brightness(0.9);
     }
 
-</style>
+    .project-card:hover .project-image {
+      transform: scale(1.08);
+      filter: brightness(1);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(13, 59, 76, 0.95) 0%,
+        rgba(13, 59, 76, 0.5) 50%,
+        transparent 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+      opacity: 0.85;
+      transition: opacity 0.5s ease;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .project-tag {
+      padding: 4px 12px;
+      background: rgba(196, 112, 79, 0.3);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .project-title {
+      font-size: 1.8rem;
+      color: var(--cream);
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .project-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease 0.1s;
+    }
+
+    .project-card:hover .project-description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease 0.15s;
+    }
+
+    .project-card:hover .project-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Experience Section */
+    .experience-section {
+      padding: 120px 0;
+      background: var(--sea-deep);
+      color: var(--cream);
+      position: relative;
+    }
+
+    .experience-timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--terracotta), var(--olive));
+    }
+
+    .experience-item {
+      position: relative;
+      padding-bottom: 48px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.6s ease;
+    }
+
+    .experience-item.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: -45px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: var(--cream);
+      border: 3px solid var(--terracotta);
+      border-radius: 50%;
+    }
+
+    .experience-date {
+      font-size: 0.85rem;
+      color: var(--terracotta);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .experience-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .experience-company {
+      font-size: 1rem;
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+
+    .experience-description {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 120px 0;
+      background: linear-gradient(135deg, var(--sea-deep) 0%, var(--sea-medium) 100%);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(196, 112, 79, 0.15) 0%, transparent 60%);
+      animation: float 15s ease-in-out infinite;
+    }
+
+    .contact-info {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0.9;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--terracotta-light);
+      transform: translateX(10px);
+    }
+
+    .contact-link svg {
+      width: 24px;
+      height: 24px;
+      color: var(--terracotta);
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      color: var(--cream);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--terracotta);
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    textarea.form-input {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 18px 40px;
+      background: var(--terracotta);
+      color: var(--cream);
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-family: inherit;
+    }
+
+    .btn-submit:hover {
+      background: var(--terracotta-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(196, 112, 79, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 40px 0;
+      background: var(--charcoal);
+      color: var(--cream);
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-text {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--cream);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      transform: translateY(-4px);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .deco-circle {
+        display: none;
+      }
+
+      .code-float {
+        display: none;
+      }
+
+      .contact-form {
+        padding: 32px 24px;
+      }
+
+      .project-image {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <div class="content-wrap">
-        <h1>Md Biplob Raihan</h1>
-        <h2>Machine Learning Engineer</h2>
-        <p>I am a ML Engineer passionate about AI, LLMs with RAG systems, and building AI models. Currently studying CSE and working on ML projects.</p>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 lg:px-12 lg:py-6" style="background: rgba(250, 248, 245, 0.95); backdrop-filter: blur(10px);">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#" class="text-2xl font-light" style="font-family: 'Cormorant Garamond', serif; color: var(--sea-deep);">
+        AC
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Expertise</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <a href="#contact" class="btn-primary hidden md:inline-flex text-sm py-3 px-6">Let's Talk</a>
+      
+      <!-- Mobile menu button -->
+      <button class="md:hidden p-2" style="color: var(--sea-deep);" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
-</header>
+  </nav>
 
-<section class="about">
-    <div class="content-wrap">
-        <h2>About Me</h2>
-        <p>I love exploring machine learning, AI model development, and transformers. Currently focusing on projects that combine data analysis with deep learning.</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="deco-grid"></div>
+    <div class="deco-circle deco-circle-1"></div>
+    <div class="deco-circle deco-circle-2"></div>
+    
+    <div class="code-float" aria-hidden="true">
+      <pre>
+model = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Llama-2-7b-chat-hf"
+)
+
+retriever = vectorstore.as_retriever(
+    search_type="mmr",
+    search_kwargs={"k": 5}
+)
+
+rag_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    chain_type="stuff",
+    retriever=retriever
+)
+      </pre>
     </div>
-</section>
-
-<section class="skill">
-    <div class="content-wrap">
-        <h2>Skills</h2>
-        <ul>
-            <li>Python</li>
-            <li>C++</li>
-            <li>Machine Learning</li>
-            <li>Deep Learning</li>
-            <li>Transformers</li>
-            <li>TensorFlow</li>
-            <li>Computer Vision</li>
-            <li>Web Development</li>
-        </ul>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v6m0 10v6M4.22 4.22l4.24 4.24m7.07 7.07l4.24 4.24M1 12h6m10 0h6M4.22 19.78l4.24-4.24m7.07-7.07l4.24-4.24"/>
+          </svg>
+          Open to Opportunities
+        </div>
+        <p class="hero-subtitle">ML Engineer & LLM Specialist</p>
+        <h1 class="hero-title">Biplob<br>Raihan</h1>
+        <p class="hero-description">
+          Building intelligent systems that understand, reason, and create. 
+          Specializing in Large Language Models, Retrieval-Augmented Generation, 
+          and scalable ML infrastructure that transforms how businesses leverage AI.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-10">
+          <a href="#projects" class="btn-primary">View Projects
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#contact" class="btn-outline">Get In Touch</a>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="project">
-    <div class="content-wrap">
-        <h2>Projects</h2>
-        <div class="project-cards">
-            <div class="project-card">
-                <h3>Disease Prediction System</h3>
-                <p>A ML system that predicts diseases based on medical data using classification algorithms.</p>
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <p class="section-subtitle" style="color: var(--terracotta-light);">About Me</p>
+          <h2 class="section-title" style="color: var(--cream);">Engineering Intelligence at Scale</h2>
+          <p class="text-lg leading-relaxed mb-6" style="opacity: 0.9;">
+            I'm a Machine Learning Engineer with deep expertise in Large Language Models 
+            and Retrieval-Augmented Generation systems. My work focuses on bridging the 
+            gap between cutting-edge AI research and production-ready applications.
+          </p>
+          <p class="text-lg leading-relaxed mb-8" style="opacity: 0.9;">
+            From fine-tuning foundation models to architecting vector databases that power 
+            semantic search, I build systems that handle real-world complexity while 
+            delivering measurable business value.
+          </p>
+          
+           
+        </div>
+        
+        <div class="reveal reveal-delay-1">
+          <h3 class="text-xl mb-6" style="color: var(--cream); font-weight: 400;">Core Technologies</h3>
+          <div class="tech-stack">
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">LangChain</span>
+            <span class="tech-tag">LlamaIndex</span>
+            <span class="tech-tag">OpenAI API</span>
+            <span class="tech-tag">Hugging Face</span>
+            <span class="tech-tag">Pinecone</span>
+            <span class="tech-tag">Weaviate</span>
+            <span class="tech-tag">ChromaDB</span>
+            <span class="tech-tag">AWS SageMaker</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Kubernetes</span>
+            <span class="tech-tag">MLflow</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Redis</span>
+          </div>
+          
+          <div class="mt-12 p-6 border-l-4" style="border-color: var(--terracotta); background: rgba(255,255,255,0.03);">
+            <p class="text-lg italic" style="opacity: 0.9; line-height: 1.8;">
+              "The best AI systems aren't just technically sophisticated—they solve real problems 
+              for real people. My goal is to make advanced ML accessible, reliable, and impactful."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <p class="section-subtitle reveal">What I Do</p>
+        <h2 class="section-title reveal reveal-delay-1">Areas of Expertise</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3 class="skill-title">LLM Fine-tuning</h3>
+          <p class="skill-description">
+            Customizing foundation models (LLaMA, Mistral, GPT) using LoRA, QLoRA, and full 
+            fine-tuning approaches for domain-specific applications with optimized inference.
+          </p>
+        </div>
+        
+        <div class="skill-card reveal reveal-delay-2">
+          <div class="skill-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
+              <polyline points="7.5 19.79 7.5 14.6 3 12"/>
+              <polyline points="21 12 16.5 14.6 16.5 19.79"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h3 class="skill-title">RAG Architecture</h3>
+          <p class="skill-description">
+            Designing and implementing sophisticated retrieval-augmented generation pipelines 
+            with hybrid search, re-ranking, and multi-hop reasoning capabilities.
+          </p>
+        </div>
+        
+        <div class="skill-card reveal reveal-delay-3">
+          <div class="skill-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <h3 class="skill-title">Vector Databases</h3>
+          <p class="skill-description">
+            Architecting scalable vector search solutions with Pinecone, Weaviate, and 
+            Milvus, optimizing for latency, throughput, and cost efficiency.
+          </p>
+        </div>
+        
+        <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="4" y="4" width="16" height="16" rx="2"/>
+              <rect x="9" y="9" width="6" height="6"/>
+              <line x1="9" y1="1" x2="9" y2="4"/>
+              <line x1="15" y1="1" x2="15" y2="4"/>
+              <line x1="9" y1="20" x2="9" y2="23"/>
+              <line x1="15" y1="20" x2="15" y2="23"/>
+              <line x1="20" y1="9" x2="23" y2="9"/>
+              <line x1="20" y1="14" x2="23" y2="14"/>
+              <line x1="1" y1="9" x2="4" y2="9"/>
+              <line x1="1" y1="14" x2="4" y2="14"/>
+            </svg>
+          </div>
+          <h3 class="skill-title">MLOps & Infrastructure</h3>
+          <p class="skill-description">
+            Building robust ML pipelines with automated training, validation, and deployment 
+            using AWS SageMaker, Docker, and Kubernetes for production scale.
+          </p>
+        </div>
+        
+        <div class="skill-card reveal reveal-delay-2">
+          <div class="skill-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+            </svg>
+          </div>
+          <h3 class="skill-title">Cloud AI Services</h3>
+          <p class="skill-description">
+            Leveraging AWS Bedrock, Google Vertex AI, and Azure OpenAI for enterprise AI 
+            solutions with optimal cost-performance balance and security compliance.
+          </p>
+        </div>
+        
+        <div class="skill-card reveal reveal-delay-3">
+          <div class="skill-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+              <line x1="2" y1="20" x2="22" y2="20"/>
+            </svg>
+          </div>
+          <h3 class="skill-title">LLM Evaluation</h3>
+          <p class="skill-description">
+            Implementing comprehensive evaluation frameworks using RAGAS, TruLens, and 
+            custom metrics to measure accuracy, faithfulness, and relevance at scale.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <p class="section-subtitle reveal">Featured Work</p>
+        <h2 class="section-title reveal reveal-delay-1">Recent Projects</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="project-card reveal">
+          <div class="project-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=600&fit=crop" alt="Enterprise RAG System" class="project-image">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">RAG</span>
+                <span class="project-tag">LangChain</span>
+                <span class="project-tag">Pinecone</span>
+              </div>
+              <h3 class="project-title">Enterprise Knowledge Assistant</h3>
+              <p class="project-description">
+                Built a production RAG system processing 50K+ documents with hybrid search, 
+                achieving 94% retrieval accuracy and 3x faster query resolution.
+              </p>
+              <a href="#" class="project-link">
+                View Case Study
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
             </div>
-            <div class="project-card">
-                <h3>Animal detection System</h3>
-                <p>A ML system that detect animal based on  data using classification algorithms.</p>
+          </div>
+        </div>
+        
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop" alt="Fine-tuned LLM" class="project-image">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Fine-tuning</span>
+                <span class="project-tag">LoRA</span>
+                <span class="project-tag">LLaMA</span>
+              </div>
+              <h3 class="project-title">Domain-Specialized LLM</h3>
+              <p class="project-description">
+                Fine-tuned LLaMA-2 for legal document analysis using QLoRA, reducing 
+                hallucinations by 67% while maintaining 95% factual accuracy.
+              </p>
+              <a href="#" class="project-link">
+                View Case Study
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
             </div>
-            <div class="project-card">
-                <h3>Machine Translation System</h3>
-                <p>A NLP domain based system which is based on text data using 
-                    deepl learning model to translate old language into English
-                </p>
+          </div>
+        </div>
+        
+        <div class="project-card reveal">
+          <div class="project-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="ML Pipeline" class="project-image">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">MLOps</span>
+                <span class="project-tag">AWS</span>
+                <span class="project-tag">Kubernetes</span>
+              </div>
+              <h3 class="project-title">Scalable ML Pipeline</h3>
+              <p class="project-description">
+                Designed an end-to-end ML pipeline on AWS SageMaker handling 1M+ predictions 
+                daily with 99.9% uptime and automated model retraining.
+              </p>
+              <a href="#" class="project-link">
+                View Case Study
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
             </div>
-             
-         </div>
+          </div>
+        </div>
+        
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop" alt="Multi-Agent System" class="project-image">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Agents</span>
+                <span class="project-tag">GPT-4</span>
+                <span class="project-tag">AutoGen</span>
+              </div>
+              <h3 class="project-title">Multi-Agent Research System</h3>
+              <p class="project-description">
+                Developed an autonomous research agent system using AutoGen that performs 
+                literature review and synthesis across 1000+ academic papers.
+              </p>
+              <a href="#" class="project-link">
+                View Case Study
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-16 reveal">
+        <a href="#" class="btn-outline">View All Projects</a>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="education">
-    <div class="content-wrap">
-        <h2>Education</h2>
-        <h3>Atish Dipankar University Of Science and Technology</h3>
-        <p>BSc in Computer Science and Engineering</p>
-        <p>Currently studying in 4th year focusing on Machine Learning and Software Development</p>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div class="contact-info reveal">
+          <p class="section-subtitle" style="color: var(--terracotta-light);">Get In Touch</p>
+          <h2 class="contact-title">Let's Build Something Intelligent</h2>
+          <p class="contact-description">
+            Whether you need help architecting an LLM solution, implementing a RAG system, 
+            or scaling your ML infrastructure, I'd love to discuss how we can work together.
+          </p>
+          
+          <div class="contact-links">
+            <a href="mailto:alex.cassian@email.com" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              alex.cassian@email.com
+            </a>
+            <a href="#" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              github.com/alexcassian
+            </a>
+            <a href="#" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              linkedin.com/in/alexcassian
+            </a>
+            <a href="#" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+              Remote / San Francisco, CA
+            </a>
+          </div>
+        </div>
+        
+        <form class="contact-form reveal reveal-delay-1" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input type="text" id="name" class="form-input" placeholder="John Smith">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" id="email" class="form-input" placeholder="john@company.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="project">Project Type</label>
+            <input type="text" id="project" class="form-input" placeholder="LLM Integration, RAG System, ML Infrastructure...">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Project Details</label>
+            <textarea id="message" class="form-input" placeholder="Tell me about your project requirements, timeline, and goals..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="contact">
-    <div class="content-wrap">
-        <h2>Contact</h2>
-        <a href="https://mail.google.com/" target="_blank">Gmail</a>
-        <a href="https://facebook.com/" target="_blank">Facebook</a>
-        <a href="https://twitter.com/" target="_blank">Twitter</a>
-        <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="footer-text">Designed and built with precision</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Hugging Face">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Twitter/X">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768m2.46-2.46L20 4"/>
+          </svg>
+        </a>
+      </div>
     </div>
-</section>
+  </footer>
 
+  <script>
+    // Scroll reveal animation with IntersectionObserver
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Experience timeline animation
+    const experienceObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const items = entry.target.querySelectorAll('.experience-item');
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('active');
+            }, index * 200);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const timeline = document.querySelector('.experience-timeline');
+    if (timeline) {
+      experienceObserver.observe(timeline);
+    }
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Navbar background on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.style.boxShadow = '0 4px 20px rgba(13, 59, 76, 0.1)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
 </body>
 </html>
